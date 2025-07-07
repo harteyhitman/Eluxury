@@ -1,0 +1,76 @@
+@use "@/styles/tokens/colors" as *;
+
+.authWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background: $white;
+  width: 100%;
+  gap: 0;
+  padding: 20px;
+}
+
+.favinaAuthBrand {
+  padding:10px;
+}
+.favinaAuthBrand img,
+.favinaAuthBrand > span {
+  width: auto;
+  height: 100vh;
+  object-fit: cover;
+  border-top-left-radius: 140px;
+  border-bottom-right-radius: 140px;
+}
+
+.formArea {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 2rem 0;
+}
+
+@media (max-width: 900px) {
+  .authWrapper {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0.5rem;
+  }
+  .favinaAuthBrand {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1.5rem;
+    padding: 0;
+  }
+  .favinaAuthBrand img,
+  .favinaAuthBrand > span {
+    max-width: 350px;
+    height: 80vh;
+    border-top-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+  }
+  .formArea {
+    max-width: 500px;
+    gap: 0.8rem;
+    padding: 1.5rem;
+  }
+  .favinaAuthBrand {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .authWrapper {
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1.2rem 0.2rem;
+  }
+
+  .formArea {
+    gap: 0.5rem;
+    padding: 1rem 1rem;
+  }
+} 

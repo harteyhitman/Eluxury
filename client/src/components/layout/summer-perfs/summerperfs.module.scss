@@ -1,0 +1,105 @@
+@use "@/styles/tokens/colors" as *;
+
+.summerPerfsSection {
+  position: relative;
+  width: 100%;
+  background: #18120c;
+  color: #fff;
+  padding: 50px 12px 50px;
+}
+
+.infoBlock {
+  max-width: 500px;
+  padding: 0 12px 0 0;
+}
+
+.infoBlock h2 {
+  line-height: 1.2;
+  font-size: 40px;
+}
+
+.subtext {
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 290px;
+}
+
+.visualBlock {
+  display: flex;
+  align-items: flex-end;
+}
+
+.visualBlock .model1 {
+  width: 70%;
+  margin-top: -200px;
+  padding-left: 100px;
+  position: relative !important;
+  min-width: 987px;
+  min-height: 871px;
+  max-width: 100%;
+  // height: 100%;
+  object-fit: cover;
+}
+
+.visualBlock .model2 {
+  width: 30%;
+  position: relative !important;
+  max-width: 100%;
+  // width: 467px;
+  // height: 467px;
+}
+
+@media (max-width: 600px) {
+  .infoBlock h2 {
+    font-size: 28px;
+  }
+
+  .subtext {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .visualBlock .model1 {
+    width: 100%;
+    margin-top: 0;
+    padding-left: 0;
+  }
+
+  .visualBlock .model1 {
+    width: 50%;
+    margin-top: 0;
+    padding-left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+  }
+  .visualBlock {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .visualBlock .model2 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .visualBlock {
+    margin-top: 50px;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .visualBlock .model1 {
+    width: 50%;
+  }
+
+  .visualBlock .model2 {
+    width: 50%;
+  }
+}
