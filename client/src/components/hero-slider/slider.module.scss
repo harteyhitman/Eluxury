@@ -1,0 +1,72 @@
+@use '../../styles/mixins';
+@use '../../styles/colors';
+
+.heroSlider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  .slidesContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s ease-in-out;
+  }
+
+  .navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(colors.$white, 0.3);
+    border: none;
+    border-radius: 50%;
+    color: colors.$white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: colors.$transition-default;
+
+    &:hover {
+      background-color: rgba(colors.$white, 0.5);
+    }
+  }
+
+  .prevButton {
+    left: 2rem;
+  }
+
+  .nextButton {
+    right: 2rem;
+  }
+
+  .pagination {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.75rem;
+    z-index: 10;
+
+    .paginationDot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid colors.$white;
+      background-color: transparent;
+      cursor: pointer;
+      transition: colors.$transition-default;
+
+      &.active {
+        background-color: colors.$white;
+      }
+
+      &:hover:not(.active) {
+        background-color: rgba(colors.$white, 0.5);
+      }
+    }
+  }
+}

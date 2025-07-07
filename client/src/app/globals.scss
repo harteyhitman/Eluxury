@@ -1,0 +1,15 @@
+@use 'variables';
+@use 'mixins';
+@use 'base';
+
+// Global styles
+body {
+  font-family: $font-primary;
+  color: $text-primary;
+  background-color: $bg-primary;
+}
+
+h1, h2, h3, h4 {
+  font-family: $font-secondary;
+  font-weight: 500;
+}
