@@ -1,0 +1,187 @@
+@use "../../../styles/colors" as *;
+@use "../../../styles/mixins" as *;
+
+.productCard {
+  position: relative;
+  margin-bottom: 2rem;
+  transition: $transition-default;
+
+  &:hover {
+    transform: translateY(-5px);
+
+    .productImage {
+      transform: scale(1.03);
+    }
+  }
+
+  .productLink {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .imageContainer {
+    position: relative;
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 125%; // 4:5 aspect ratio
+    background-color: $light-gray;
+    margin-bottom: 1rem;
+
+    .productImage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: $transition-default;
+    }
+  }
+
+  .badges {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 2;
+  }
+
+  .badge {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 2px;
+  }
+
+  .newBadge {
+    background-color: $gold;
+    color: $dark-charcoal;
+  }
+
+  .limitedBadge {
+    background-color: $dark-charcoal;
+    color: $white;
+  }
+
+  .discountBadge {
+    background-color: #d32f2f;
+    color: $white;
+  }
+
+  .productInfo {
+    text-align: center;
+  }
+
+  .productName {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+  }
+
+  .productCategory {
+    color: lighten($dark-charcoal, 30%);
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .priceContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .price {
+    font-weight: 600;
+  }
+
+  .discountedPrice {
+    font-weight: 600;
+    color: $gold;
+  }
+
+  .originalPrice {
+    text-decoration: line-through;
+    color: lighten($dark-charcoal, 40%);
+    font-size: 0.9rem;
+  }
+}
+.quickViewButton {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: rgba($dark-charcoal, 0.9);
+  color: $white;
+  border: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: $transition-default;
+  opacity: 0;
+  z-index: 2;
+}
+
+.productCard:hover {
+  .quickViewButton {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+.addToCartButton {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  background-color: $gold;
+  color: $light-gray;
+  border-top-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: $transition-default;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    background-color: darken($gold, 5%);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: lighten($gold, 10%);
+  }
+
+  &.adding {
+    background-color: darken($gold, 10%);
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba($white, 0.2);
+      animation: slideRight 1s ease-out;
+    }
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

@@ -1,0 +1,195 @@
+@use '../../../styles/colors' as *;
+@use '../../../styles/mixins' as *;
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($black, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modalContent {
+  position: relative;
+  background-color: $white;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba($black, 0.3);
+  animation: fadeIn 0.3s ease-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: $dark-charcoal;
+  cursor: pointer;
+  z-index: 10;
+  transition: $transition-default;
+
+  &:hover {
+    color: $gold;
+    transform: rotate(90deg);
+  }
+}
+
+.modalGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  @include responsive(768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.imageContainer {
+  padding: 2rem;
+  background-color: $light-gray;
+
+  @include responsive(768px) {
+    padding: 1rem;
+  }
+}
+
+.productImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 400px;
+}
+
+.productDetails {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  @include responsive(768px) {
+    padding: 1rem;
+  }
+}
+
+.productName {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: $dark-charcoal;
+}
+
+.productCategory {
+  color: lighten($dark-charcoal, 30%);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.priceContainer {
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.discountedPrice {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $gold;
+}
+
+.originalPrice {
+  text-decoration: line-through;
+  color: lighten($dark-charcoal, 40%);
+}
+
+.discountPercentage {
+  background-color: lighten(#d32f2f, 40%);
+  color: #d32f2f;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 2px;
+}
+
+.limitedBadge {
+  display: inline-block;
+  background-color: $dark-charcoal;
+  color: $white;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  align-self: flex-start;
+}
+
+.productDescription {
+  color: lighten($dark-charcoal, 20%);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+  flex-wrap: wrap;
+
+  button {
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: $transition-default;
+    border: none;
+  }
+}
+
+.addToCartButton {
+  background-color: $gold;
+  color: $dark-charcoal;
+  flex-grow: 1;
+
+  &:hover {
+    background-color: darken($gold, 5%);
+  }
+}
+
+.viewDetailsButton {
+  background-color: transparent;
+  color: $dark-charcoal;
+  border: 1px solid $dark-charcoal !important;
+  flex-grow: 1;
+
+  &:hover {
+    background-color: $dark-charcoal;
+    color: $white;
+  }
+}

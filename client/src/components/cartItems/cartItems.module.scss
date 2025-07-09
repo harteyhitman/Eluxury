@@ -1,0 +1,90 @@
+@use '@/styles/colors' as *;
+@use '@/styles/mixins' as *;
+
+.cartItem {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid lighten($dark-charcoal, 90%);
+  position: relative;
+}
+
+.itemImage {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  background-color: $light-gray;
+  position: relative;
+}
+
+.itemDetails {
+  flex: 1;
+}
+
+.itemName {
+  font-size: 1rem;
+  margin: 0 0 0.5rem 0;
+  color: $dark-charcoal;
+}
+
+.priceContainer {
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-size: 0.9rem;
+}
+
+.discountedPrice {
+  font-size: 0.9rem;
+  color: $gold;
+  margin-right: 0.5rem;
+}
+
+.originalPrice {
+  font-size: 0.8rem;
+  text-decoration: line-through;
+  color: lighten($dark-charcoal, 40%);
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quantityButton {
+  width: 25px;
+  height: 25px;
+  border: 1px solid lighten($dark-charcoal, 70%);
+  background: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: $transition-default;
+
+  &:hover {
+    border-color: $gold;
+    color: $gold;
+  }
+}
+
+.quantity {
+  min-width: 20px;
+  text-align: center;
+}
+
+.removeButton {
+  position: absolute;
+  top: 1rem;
+  right: 0;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: lighten($dark-charcoal, 50%);
+  transition: $transition-default;
+
+  &:hover {
+    color: $dark-charcoal;
+  }
+}

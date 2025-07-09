@@ -1,5 +1,5 @@
-@use '../../styles/mixins';
-@use '../../styles/colors';
+@use '../../styles/mixins' as *;
+@use '../../styles/colors' as *;
 
 .heroSlider {
   position: relative;
@@ -20,17 +20,17 @@
     transform: translateY(-50%);
     width: 50px;
     height: 50px;
-    background-color: rgba(colors.$white, 0.3);
+    background-color: rgba($white, 0.3);
     border: none;
     border-radius: 50%;
-    color: colors.$white;
+    color: $white;
     font-size: 1.5rem;
     cursor: pointer;
     z-index: 10;
-    transition: colors.$transition-default;
+    transition: $transition-default;
 
     &:hover {
-      background-color: rgba(colors.$white, 0.5);
+      background-color: rgba($white, 0.5);
     }
   }
 
@@ -55,17 +55,17 @@
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      border: 1px solid colors.$white;
+      border: 1px solid $white;
       background-color: transparent;
       cursor: pointer;
-      transition: colors.$transition-default;
+      transition: $transition-default;
 
       &.active {
-        background-color: colors.$white;
+        background-color: $white;
       }
 
       &:hover:not(.active) {
-        background-color: rgba(colors.$white, 0.5);
+        background-color: rgba($white, 0.5);
       }
     }
   }

@@ -1,0 +1,143 @@
+@use "../../styles/colors" as *;
+@use "../../styles/mixins" as *;
+
+.featuredProducts {
+  padding: 5rem 0;
+  background-color: $bg-dark;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    color: $text-light;
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 2px;
+      background-color: $gold;
+    }
+  }
+
+  .subtitle {
+    color: lighten($dark-charcoal, 30%);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .productsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+
+    @include responsive(768px) {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+  }
+
+  .ctaContainer {
+    text-align: center;
+  }
+
+  .viewAllButton {
+    padding: 1rem 2.5rem;
+    background-color: $gold;
+    color: $light-gray;
+    border: 1px solid $dark-charcoal;
+    border-top-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: $transition-default;
+
+    &:hover {
+      background-color: $dark-charcoal;
+      color: $white;
+    }
+  }
+}
+// Add these to your existing styles
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filterGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filterLabel {
+  font-size: 0.9rem;
+  color: $light-gray !important;
+  font-weight: 600;
+}
+
+.filterSelect {
+  padding: 0.5rem 1rem;
+  border: 1px solid lighten($dark-charcoal, 70%);
+  background-color: $white;
+  color: $dark-charcoal;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: $transition-default;
+  min-width: 180px;
+    border-top-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  &:hover {
+    border-color: $gold;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $gold;
+    box-shadow: 0 0 0 1px $gold;
+  }
+}
+
+.noResults {
+  text-align: center;
+  padding: 3rem 0;
+  color: lighten($dark-charcoal, 30%);
+}
+
+.resetButton {
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  background-color: transparent;
+  border: 1px solid $gold;
+  color: $gold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: $transition-default;
+
+  &:hover {
+    background-color: $gold;
+    color: $white;
+  }
+}

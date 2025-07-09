@@ -4,8 +4,10 @@ import { useState, useEffect, useCallback } from 'react';
 import styles from './slider.module.scss';
 import { Slide } from '@/features';
 import watch from  '../../../public/hero/watch1.jpg';
-import jewelry from  '../../../public/hero/watch1.jpg';
-import accessories from  '../../../public/hero/watch1.jpg';
+import watch2 from  '../../../public/hero/watch2.jpg';
+import jewelry from  '../../../public/hero/jewelry1.jpg';
+import jewelry2 from  '../../../public/hero/jewelry2.jpg';
+import accessories from  '../../../public/hero/accessories.jpg';
 
 const slides = [
   {
@@ -29,6 +31,22 @@ const slides = [
     title: "Limited Edition Accessories",
     subtitle: "Exclusivity at Its Finest",
     imageUrl: accessories,
+    ctaText: "Explore Exclusives",
+    ctaLink: "/collections/limited-editions"
+  },
+  {
+    id: 4,
+    title: "Limited Edition Accessories",
+    subtitle: "Exclusivity at Its Finest",
+    imageUrl: watch2,
+    ctaText: "Explore Exclusives",
+    ctaLink: "/collections/limited-editions"
+  },
+  {
+    id: 5,
+    title: "Limited Edition Accessories",
+    subtitle: "Exclusivity at Its Finest",
+    imageUrl: jewelry2,
     ctaText: "Explore Exclusives",
     ctaLink: "/collections/limited-editions"
   }

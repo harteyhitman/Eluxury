@@ -3,11 +3,13 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import styles from './navabar.module.scss';
+import styles from './navbar.module.scss';
+import { useCart } from '@/contexts/CartContext';
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const { itemCount, toggleCart } = useCart();
+  
   return (
     <nav className={styles.navbar}>
       <div className={styles.container}>
@@ -25,14 +27,15 @@ export const Navbar = () => {
             <Link href="/featured" className={styles.link}>Featured Products</Link>
             <Link href="/about" className={styles.link}>About Us</Link>
             <Link href="/showroom" className={styles.link}>Virtual Showroom</Link>
-            <button className={styles.cartButton}>
+            <button className={styles.cartButton} onClick={toggleCart}>
               <svg xmlns="http://www.w3.org/2000/svg" className={styles.cartIcon} viewBox="0 0 24 24" stroke="currentColor" fill="none">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
-              <span className={styles.cartBadge}>0</span>
+              {itemCount > 0 && (
+              <span className={styles.cartBadge}>{itemCount}</span>
+              )}
             </button>
           </div>
-
           {/* Mobile Menu Button */}
           <div className={styles.mobileToggle}>
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={styles.toggleBtn}>
@@ -68,7 +71,8 @@ export const Navbar = () => {
               <svg className={styles.cartIconSmall} viewBox="0 0 24 24" stroke="currentColor" fill="none">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
-              <span>Cart (0)</span>
+              <span>Cart ({itemCount})</span>
+
             </div>
           </motion.div>
         )}

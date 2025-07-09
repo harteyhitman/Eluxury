@@ -1,0 +1,133 @@
+@use '@/styles/colors' as *;
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($black, 0.5);
+  z-index: 1000;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  background-color: $white;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -5px 0 15px rgba($black, 0.1);
+}
+
+.header {
+  padding: 1.5rem;
+  border-bottom: 1px solid lighten($dark-charcoal, 80%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin: 0;
+  color: $dark-charcoal;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: $dark-charcoal;
+  transition: $transition-default;
+
+  &:hover {
+    color: $gold;
+    transform: rotate(90deg);
+  }
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.emptyCart {
+  text-align: center;
+  padding: 2rem 0;
+  color: lighten($dark-charcoal, 30%);
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.continueShopping {
+  button {
+    background: none;
+    border: none;
+    color: $gold;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: inherit;
+    padding: 0;
+  }
+}
+
+.itemsList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.summary {
+  border-top: 1px solid lighten($dark-charcoal, 80%);
+  padding-top: 1.5rem;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  color: lighten($dark-charcoal, 30%);
+}
+
+.summaryRowTotal {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: $dark-charcoal;
+}
+
+.checkoutButton {
+  width: 100%;
+  padding: 1rem;
+  background-color: $gold;
+  color: $dark-charcoal;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: $transition-default;
+  margin-bottom: 1rem;
+
+  &:hover {
+    background-color: darken($gold, 5%);
+  }
+}
+
+.continueShopping {
+  text-align: center;
+  color: lighten($dark-charcoal, 30%);
+  margin-top: 1rem;
+}
