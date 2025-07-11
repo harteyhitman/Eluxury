@@ -1,0 +1,100 @@
+@use '@/styles/colors' as *;
+@use '@/styles/mixins' as *;
+
+.craftsmanship {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin: 6rem 0;
+  align-items: center;
+
+  @include responsive("mobile") {
+    grid-template-columns: 1fr;
+  }
+}
+
+.imageContainer {
+  position: relative;
+  order: 1;
+
+  @include responsive("mobile") {
+    order: 2;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid $gold;
+    z-index: -1;
+
+    @include responsive("mobile") {
+      top: -10px;
+      left: -10px;
+    }
+  }
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.content {
+  padding-left: 2rem;
+  order: 2;
+
+  @include responsive("mobile") {
+    padding-left: 0;
+    order: 1;
+  }
+}
+
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: $dark-charcoal;
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: $gold;
+  }
+}
+
+.text {
+  color: lighten($dark-charcoal, 20%);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.craftList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    color: lighten($dark-charcoal, 20%);
+
+    &::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: $gold;
+      font-weight: bold;
+    }
+  }
+}

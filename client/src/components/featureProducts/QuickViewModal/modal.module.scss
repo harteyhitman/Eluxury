@@ -61,7 +61,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 
-  @include responsive(768px) {
+  @include responsive("mobile") {
     grid-template-columns: 1fr;
   }
 }
@@ -70,7 +70,7 @@
   padding: 2rem;
   background-color: $light-gray;
 
-  @include responsive(768px) {
+  @include responsive("mobile") {
     padding: 1rem;
   }
 }
@@ -87,7 +87,7 @@
   display: flex;
   flex-direction: column;
 
-  @include responsive(768px) {
+  @include responsive("mobile") {
     padding: 1rem;
   }
 }
@@ -146,6 +146,8 @@
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
   align-self: flex-start;
+  border-top-left-radius: 12px;
+border-bottom-right-radius: 12px;
 }
 
 .productDescription {
@@ -174,11 +176,45 @@
 
 .addToCartButton {
   background-color: $gold;
-  color: $dark-charcoal;
+  color: $light-gray;
+  border-top-left-radius: 12px;
+border-bottom-right-radius: 12px;
   flex-grow: 1;
+  transition: $transition-default;
+  position: relative;
+  overflow: hidden;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: darken($gold, 5%);
+  }
+
+  &:disabled {
+    background-color: lighten($gold, 10%);
+    cursor: not-allowed;
+  }
+
+  &.adding {
+    background-color: darken($gold, 10%);
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba($white, 0.2);
+      animation: slideRight 1s ease-out;
+    }
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }
 
@@ -187,7 +223,8 @@
   color: $dark-charcoal;
   border: 1px solid $dark-charcoal !important;
   flex-grow: 1;
-
+border-top-left-radius: 12px;
+border-bottom-right-radius: 12px;
   &:hover {
     background-color: $dark-charcoal;
     color: $white;

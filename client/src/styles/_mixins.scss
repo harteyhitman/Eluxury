@@ -1,18 +1,39 @@
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin absolute-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+// styles/mixins.scss
 
 @mixin responsive($breakpoint) {
-  @media (max-width: $breakpoint) {
-    @content;
+  @if $breakpoint == "mobile" {
+    @media (max-width: 900px) {
+      @content;
+    }
+  } @else if $breakpoint == "tablet" {
+    @media (min-width: 900px) and (max-width: 1023px) {
+      @content;
+    }
+  } @else if $breakpoint == "desktop" {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  }
+}
+
+@mixin flex($gap) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $gap;
+}
+
+@mixin border($color) {
+  border: 1px solid $color;
+}
+
+@mixin btn-styles {
+  outline: none;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  scale: 1;
+
+  &:hover {
+    transform: scale(0.98);
   }
 }

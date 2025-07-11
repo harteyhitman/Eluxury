@@ -1,0 +1,45 @@
+@use '@/styles/colors' as *;
+@use '@/styles/mixins' as *;
+
+.aboutSection {
+  padding: 5rem 0;
+  background-color: $bg-secondary;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: $dark-charcoal;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background-color: $gold;
+  }
+}
+
+.sectionSubtitle {
+  text-align: center;
+  color: lighten($dark-charcoal, 30%);
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}

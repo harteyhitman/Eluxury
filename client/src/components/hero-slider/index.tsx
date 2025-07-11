@@ -1,20 +1,15 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import styles from './slider.module.scss';
 import { Slide } from '@/features';
-import watch from  '../../../public/hero/watch1.jpg';
-import watch2 from  '../../../public/hero/watch2.jpg';
-import jewelry from  '../../../public/hero/jewelry1.jpg';
-import jewelry2 from  '../../../public/hero/jewelry2.jpg';
-import accessories from  '../../../public/hero/accessories.jpg';
 
 const slides = [
   {
     id: 1,
     title: "Exquisite Luxury Watches",
     subtitle: "Timeless Elegance Redefined",
-    imageUrl: watch,
+    imageUrl: 'https://res.cloudinary.com/ddguvwiyp/image/upload/v1752059138/watch1_p8d8kq.jpg',
     ctaText: "Discover Collection",
     ctaLink: "/collections/watches"
   },
@@ -22,7 +17,7 @@ const slides = [
     id: 2,
     title: "Handcrafted Jewelry",
     subtitle: "Exceptional Pieces for Exceptional People",
-    imageUrl: jewelry,
+    imageUrl: 'https://res.cloudinary.com/ddguvwiyp/image/upload/v1752059138/jewelry1_ubb4gb.jpg',
     ctaText: "View Masterpieces",
     ctaLink: "/collections/jewelry"
   },
@@ -30,7 +25,7 @@ const slides = [
     id: 3,
     title: "Limited Edition Accessories",
     subtitle: "Exclusivity at Its Finest",
-    imageUrl: accessories,
+    imageUrl: 'https://res.cloudinary.com/ddguvwiyp/image/upload/v1752059138/accessories_sqscys.jpg',
     ctaText: "Explore Exclusives",
     ctaLink: "/collections/limited-editions"
   },
@@ -38,7 +33,7 @@ const slides = [
     id: 4,
     title: "Limited Edition Accessories",
     subtitle: "Exclusivity at Its Finest",
-    imageUrl: watch2,
+    imageUrl: 'https://res.cloudinary.com/ddguvwiyp/image/upload/v1752059143/watch2_rvvsew.jpg',
     ctaText: "Explore Exclusives",
     ctaLink: "/collections/limited-editions"
   },
@@ -46,7 +41,7 @@ const slides = [
     id: 5,
     title: "Limited Edition Accessories",
     subtitle: "Exclusivity at Its Finest",
-    imageUrl: jewelry2,
+    imageUrl: 'https://res.cloudinary.com/ddguvwiyp/image/upload/v1752059152/jewelry2_paw8pp.jpg',
     ctaText: "Explore Exclusives",
     ctaLink: "/collections/limited-editions"
   }
@@ -55,67 +50,121 @@ const slides = [
 export const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  // Create an extended slides array for seamless looping
+  const extendedSlides = [...slides, slides[0]];
 
   const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  }, []);
+    setIsTransitioning(true);
+    setCurrentSlide((prev) => {
+      // If we're at the last slide (which is a duplicate of first), 
+      // immediately reset to first slide without animation
+      if (prev === slides.length - 1) {
+        setTimeout(() => {
+          setCurrentSlide(0);
+          setIsTransitioning(false);
+        }, 50); // Tiny delay to ensure state update
+        return prev + 1;
+      }
+      return prev + 1;
+    });
+    
+    // Reset transitioning state after animation completes
+    setTimeout(() => setIsTransitioning(false), 700);
+  }, [slides.length]);
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    setIsTransitioning(true);
+    setCurrentSlide((prev) => {
+      if (prev === 0) {
+        // If at first slide, jump to the duplicate last slide without animation
+        setTimeout(() => {
+          setCurrentSlide(slides.length - 1);
+          setIsTransitioning(false);
+        }, 50);
+        return -1;
+      }
+      return prev - 1;
+    });
+    setTimeout(() => setIsTransitioning(false), 700);
   };
 
   const goToSlide = (index: number) => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
     setCurrentSlide(index);
     setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 5000);
+    setTimeout(() => {
+      setIsTransitioning(false);
+      setIsAutoPlaying(true);
+    }, 700);
   };
 
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (!isAutoPlaying || isTransitioning) return;
 
     const interval = setInterval(() => {
       nextSlide();
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, nextSlide]);
+  }, [isAutoPlaying, isTransitioning, nextSlide]);
+
+  // Calculate the real index for pagination (handles the duplicate slide)
+  const getRealIndex = (index: number) => {
+    return index >= slides.length ? 0 : index;
+  };
 
   return (
-    <div className={styles.heroSlider}>
-      <div 
-        className={styles.slidesContainer}
-        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-      >
-        {slides.map((slide) => (
-          <Slide key={slide.id} {...slide} imageUrl={slide.imageUrl.src} />
-        ))}
-      </div>
-
-      <button 
-        className={`${styles.navButton} ${styles.prevButton}`}
-        onClick={prevSlide}
-        aria-label="Previous slide"
-      >
-        &larr;
-      </button>
-
-      <button 
-        className={`${styles.navButton} ${styles.nextButton}`}
-        onClick={nextSlide}
-        aria-label="Next slide"
-      >
-        &rarr;
-      </button>
-
-      <div className={styles.pagination}>
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            className={`${styles.paginationDot} ${index === currentSlide ? styles.active : ''}`}
-            onClick={() => goToSlide(index)}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
+    <div className={styles.slideWrapper}>
+      <div className={styles.overlay} />
+      <div className={styles.heroSlider} ref={sliderRef}>
+        <div 
+          className={styles.slidesContainer}
+          style={{ 
+            transform: `translateX(-${currentSlide * 100}%)`,
+            transition: isTransitioning ? 'transform 0.7s ease-in-out' : 'none'
+          }}
+        >
+          {extendedSlides.map((slide, index) => (
+            <Slide
+              key={`${slide.id}-${index}`}
+              {...slide}
+              imageUrl={slide.imageUrl}
+            />
+          ))}
+        </div>
+        <button 
+          className={`${styles.navButton} ${styles.prevButton}`}
+          onClick={prevSlide}
+          aria-label="Previous slide"
+          disabled={isTransitioning}
+        >
+          &larr;
+        </button>
+        <button 
+          className={`${styles.navButton} ${styles.nextButton}`}
+          onClick={nextSlide}
+          aria-label="Next slide"
+          disabled={isTransitioning}
+        >
+          &rarr;
+        </button>
+        <div className={styles.pagination}>
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              className={`${styles.paginationDot} ${
+                getRealIndex(currentSlide) === index ? styles.active : ''
+              }`}
+              onClick={() => goToSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              disabled={isTransitioning}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,47 @@
+@use '@/styles/colors' as *;
+@use '@/styles/mixins' as *;
+
+.floatingButton {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: $gold;
+  color: $dark-charcoal;
+  border: none;
+  box-shadow: 0 4px 15px rgba($black, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 999;
+  transition: $transition-default;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba($black, 0.3);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: $dark-charcoal;
+  color: $white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}

@@ -13,7 +13,7 @@ export const Slide = ({ title, subtitle, imageUrl, ctaText, ctaLink }: SlideProp
   return (
     <div 
       className={styles.slide}
-      style={{ backgroundImage: `url(${imageUrl})` }}
+      style={{ backgroundImage: `url(${imageUrl})`,  zIndex: 10000 }}
     >
       <div className={styles.content}>
         <h1 className={styles.title}>{title}</h1>

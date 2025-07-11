@@ -1,0 +1,90 @@
+@use  '../../../styles/colors' as *;
+@use  '../../../styles/mixins' as *;
+
+.team {
+  margin: 6rem 0 3rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: $dark-charcoal;
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background-color: $gold;
+  }
+}
+
+.subtitle {
+  color: lighten($dark-charcoal, 30%);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.teamMember {
+  background-color: $gold;
+//   background-image: url("https://res.cloudinary.com/ddguvwiyp/image/upload/v1752075602/realgold-background_jxppq4.jpg");
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba($black, 0.05);
+  transition: $transition-default;
+  border-radius: 4px;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba($black, 0.1);
+  }
+}
+
+.imageWrapper {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 1.5rem;
+  border: 3px solid $light-gray;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.memberName {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: $light-gray;
+}
+
+.memberPosition {
+  color: $light-gray;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.memberBio {
+  color: lighten($light-gray, 30%);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
