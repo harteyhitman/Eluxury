@@ -112,7 +112,6 @@ export const HeroSlider = () => {
     return () => clearInterval(interval);
   }, [isAutoPlaying, isTransitioning, nextSlide]);
 
-  // Calculate the real index for pagination (handles the duplicate slide)
   const getRealIndex = (index: number) => {
     return index >= slides.length ? 0 : index;
   };

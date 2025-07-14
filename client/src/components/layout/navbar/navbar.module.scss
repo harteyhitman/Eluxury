@@ -1,5 +1,5 @@
-@use '@/styles/colors' as *; // assuming you store colors like $primary, $gold, etc.
-@use '@/styles/mixins' as *; // assuming you store colors like $primary, $gold, etc.
+@use '@/styles/colors' as *;
+@use '@/styles/mixins' as *;
 
 .navbar {
   background-color: $primary;

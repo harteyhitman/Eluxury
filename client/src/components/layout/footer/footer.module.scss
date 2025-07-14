@@ -1,10 +1,11 @@
-@use '@/styles/colors.scss';
+@use '@/styles/colors' as *;
+@use '@/styles/mixins' as *;
 
 .footer {
-  background-color: colors.$background;// dark-charcoal
-  color: colors.$white;
+  background-color: $background;// dark-charcoal
+  color: $white;
   padding: 3rem 1rem;
-  border-top: 1px solid colors.$border;
+  border-top: 1px solid $border;
 }
 
 .content {
@@ -31,7 +32,7 @@
 }
 
 .description {
-  color: colors.$subtext;
+  color: $subtext;
 }
 
 .heading {
@@ -50,40 +51,40 @@
 }
 
 .link {
-  color: colors.$subtext;
+  color: $subtext;
   text-decoration: none;
   transition: color 0.3s;
 
   &:hover {
-    color: colors.$gold;
+    color: $gold;
   }
 }
 
 .social {
   display: flex;
+  gap: 1.5rem;
+}
+.socials{
+  display: flex;
   gap: 1rem;
+  margin-top: 1rem;
+  color: $subtext;
 }
-
 .icon {
-  color: colors.$subtext;
+  color: $subtext;
   transition: color 0.3s;
-
+  font-size: 30px;
   &:hover {
-    color: colors.$gold;
+    color: $gold;
   }
-}
-
-.iconSvg {
-  height: 1.5rem;
-  width: 1.5rem;
 }
 
 .bottom {
   max-width: 1280px;
   margin: 2rem auto 0;
   padding-top: 2rem;
-  border-top: 1px solid colors.$border;
+  border-top: 1px solid $border;
   text-align: center;
-  color: colors.$card-category;
+  color: $card-category;
   font-size: 0.875rem;
 }

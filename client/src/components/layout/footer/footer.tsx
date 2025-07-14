@@ -1,4 +1,8 @@
 import styles from './footer.module.scss';
+import { GrInstagram } from "react-icons/gr";
+import { FaFacebook } from "react-icons/fa6";
+import { FaTwitter } from "react-icons/fa";
+import { AiFillTikTok } from "react-icons/ai";
 
 export const Footer = () => {
   return (
@@ -33,12 +37,17 @@ export const Footer = () => {
           <h4 className={styles.heading}>CONNECT</h4>
           <div className={styles.social}>
             <a href="#" className={styles.icon}>
-              <span className="sr-only">Instagram</span>
-              <svg viewBox="0 0 24 24" fill="currentColor" className={styles.iconSvg}>
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07..." />
-              </svg>
+             <GrInstagram />
             </a>
-            {/* Add other social icons here */}
+            <a href="#" className={styles.icon}>
+             <FaFacebook />
+            </a>
+            <a href="#" className={styles.icon}>
+             <FaTwitter />
+            </a>
+            <a href="#" className={styles.icon}>
+             <AiFillTikTok />
+            </a>
           </div>
         </div>
       </div>
