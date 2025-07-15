@@ -1,7 +1,8 @@
 'use client';
 import { useState } from "react";
 import { registerUser } from "@/libs/auth";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import styles from "@/styles/auth.module.scss";
 
 export default function Register() {
   const [form, setForm] = useState({ username: "", email: "", password: "" });
@@ -13,12 +14,40 @@ export default function Register() {
     router.push("/login");
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Username" onChange={(e) => setForm({ ...form, username: e.target.value })} />
-      <input type="email" placeholder="Email" onChange={(e) => setForm({ ...form, email: e.target.value })} />
-      <input type="password" placeholder="Password" onChange={(e) => setForm({ ...form, password: e.target.value })} />
-      <button type="submit">Register</button>
-    </form>
+return (
+    <div className={styles.authContainer}>
+      <form className={styles.formCard} onSubmit={handleSubmit}>
+        <h2>Create Account</h2>
+
+        <div className={styles.inputGroup}>
+          <label>Username</label>
+          <input
+            type="text"
+            required
+            onChange={(e) => setForm({ ...form, username: e.target.value })}
+          />
+        </div>
+
+        <div className={styles.inputGroup}>
+          <label>Email</label>
+          <input
+            type="email"
+            required
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+          />
+        </div>
+
+        <div className={styles.inputGroup}>
+          <label>Password</label>
+          <input
+            type="password"
+            required
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
+          />
+        </div>
+
+        <button type="submit" className={styles.button}>Register</button>
+      </form>
+    </div>
   );
 }

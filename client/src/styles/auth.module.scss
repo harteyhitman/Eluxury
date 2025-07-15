@@ -1,0 +1,80 @@
+@use "@/styles/colors" as *;
+@use "@/styles/mixins" as *;
+
+.authContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(120deg, $dark-charcoal, $black);
+  padding: 2rem;
+}
+
+.formCard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  color: $light-gray;
+}
+
+.formCard h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  letter-spacing: 1px;
+  color: $light-gray;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.inputGroup label {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: #ddd;
+}
+
+.inputGroup input {
+  padding: 0.75rem 1rem;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: $light-gray;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+        border-top-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+}
+
+.inputGroup input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid #ffffff33;
+        border-top-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+}
+
+.button {
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: $gold;
+  border-top-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.button:hover {
+  background-color: darken($gold, 7%);
+  transform: translateY(-2px);
+}

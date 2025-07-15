@@ -1,5 +1,4 @@
 'use client'
-
 import Link from 'next/link';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -9,7 +8,6 @@ import { useCart } from '@/contexts/CartContext';
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { itemCount, toggleCart } = useCart();
-  
   return (
     <nav className={styles.navbar}>
       <div className={styles.container}>
@@ -20,7 +18,6 @@ export const Navbar = () => {
               EXQUISITE
             </Link>
           </div>
-
           {/* Desktop Navigation */}
           <div className={styles.desktopMenu}>
             <Link href="/shop" className={styles.link}>Shop Now</Link>
@@ -52,7 +49,6 @@ export const Navbar = () => {
           </div>
         </div>
       </div>
-
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
@@ -72,7 +68,6 @@ export const Navbar = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
               <span>Cart ({itemCount})</span>
-
             </div>
           </motion.div>
         )}
