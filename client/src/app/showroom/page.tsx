@@ -1,19 +1,18 @@
+"use client";
+import { Layout } from "@/components/home-layout/Layout";
+import { Showroom } from "@/components/virtualShowRoom/Showroom";
 import { useAuthGuard } from "@/hooks/useAuthGuard";
 
-export default function ShowRoom() {
+export default function ShowRoomPage() {
+  useAuthGuard();
 
-useAuthGuard();
-
-return (
+  return (
+    <Layout>
       <div className="min-h-screen bg-gray-100">
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          <div className="px-4 py-6 sm:px-0">
-            <h1 className="text-3xl font-bold text-gray-900"> ShowRoom</h1>
-            <p className="mt-4 text-gray-600">
-              Welcome, to where luxury meets elegance.
-            </p>
-          </div>
+          <Showroom />
         </div>
       </div>
+    </Layout>
   );
 }

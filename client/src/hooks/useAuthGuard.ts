@@ -1,5 +1,6 @@
+'use client';
 import { useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/stores/authStore";
 
 export const useAuthGuard = (role?: "admin" | "user") => {
@@ -8,7 +9,7 @@ export const useAuthGuard = (role?: "admin" | "user") => {
 
   useEffect(() => {
     if (!token) {
-      router.push("/login");
+      router.push("/auths/login");
     } else if (role && user?.role !== role) {
       router.push("/unauthorized");
     }

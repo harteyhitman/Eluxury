@@ -1,23 +1,25 @@
-'use client';
+"use client";
 import { useState } from "react";
 import { registerUser } from "@/libs/auth";
 import { useRouter } from "next/navigation";
 import styles from "@/styles/auth.module.scss";
+import Link from "next/link";
 
 export default function Register() {
   const [form, setForm] = useState({ username: "", email: "", password: "" });
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await registerUser(form);
-    router.push("/login");
+    router.push("/auths/login");
   };
 
-return (
+  return (
     <div className={styles.authContainer}>
       <form className={styles.formCard} onSubmit={handleSubmit}>
-        <h2>Create Account</h2>
+        <h2>Register</h2>
 
         <div className={styles.inputGroup}>
           <label>Username</label>
@@ -39,14 +41,26 @@ return (
 
         <div className={styles.inputGroup}>
           <label>Password</label>
-          <input
-            type="password"
-            required
-            onChange={(e) => setForm({ ...form, password: e.target.value })}
-          />
+          <div className={styles.passwordField}>
+            <input
+              type={showPassword ? "text" : "password"}
+              required
+              onChange={(e) => setForm({ ...form, password: e.target.value })}
+            />
+            <span onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? "🙈" : "👁️"}
+            </span>
+          </div>
         </div>
 
-        <button type="submit" className={styles.button}>Register</button>
+        <button type="submit" className={styles.button}>
+          Register
+        </button>
+
+        <p className={styles.toggleText}>
+          Already have an account?
+          <Link href="/auths/login">Login</Link>
+        </p>
       </form>
     </div>
   );

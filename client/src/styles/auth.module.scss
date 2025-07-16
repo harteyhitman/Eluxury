@@ -60,6 +60,25 @@
       border-bottom-right-radius: 12px;
 }
 
+.passwordField {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  input {
+    flex: 1;
+  }
+
+  span {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.1rem;
+    color: #ccc;
+  }
+}
+
 .button {
   width: 100%;
   padding: 0.85rem;
@@ -77,4 +96,17 @@
 .button:hover {
   background-color: darken($gold, 7%);
   transform: translateY(-2px);
+}
+
+.toggleText {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+
+  a {
+    color: #f7c948;
+    font-weight: 600;
+    text-decoration: underline;
+    margin-left: 0.25rem;
+  }
 }
