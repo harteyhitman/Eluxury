@@ -3,7 +3,6 @@ import styles from './Showroom.module.scss';
 import { ShowroomViewer } from './ShowroomViewer/ShowroomViewer';
 import { ProductCarousel } from './productCarousel/ProductCarousel';
 import { EnvironmentSelector } from './EnvironmentSelector/EnvironmentSelector';
-
 const environments = [
   {
     id: 'modern-penthouse',
@@ -49,6 +48,7 @@ export const Showroom = () => {
   const [currentProduct, setCurrentProduct] = useState(products[0]);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
+  
   return (
     <section className={`${styles.showroom} ${isFullscreen ? styles.fullscreen : ''}`}>
       <div className={styles.controls}>

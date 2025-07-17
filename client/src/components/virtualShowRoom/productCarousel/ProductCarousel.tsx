@@ -72,6 +72,7 @@ export const ProductCarousel = ({
                 alt=""
                 fill
                 className={styles.carouselImage}
+                 unoptimized
               />
             </div>
           </button>
