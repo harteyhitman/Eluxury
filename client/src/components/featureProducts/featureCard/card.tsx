@@ -50,7 +50,6 @@ export const ProductCard = ({ product, onQuickView }: ProductCardProps) => {
               alt={product.name} 
               className={styles.productImage}
             />
-            
             <div className={styles.badges}>
               {product.isNew && (
                 <span className={`${styles.badge} ${styles.newBadge}`}>NEW</span>

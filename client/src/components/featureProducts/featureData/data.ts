@@ -35,7 +35,7 @@ export const featuredProducts: Product[] = [
     category: 'Jewelry',
     price: 85000,
     imageUrl: emerald,
-    isLimitedEdition: false,
+    isLimitedEdition: true,
     discountPercentage: 15
   },
 
